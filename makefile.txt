@@ -1,0 +1,16 @@
+compile :server client
+
+server :server.cpp
+        g++ -c server.cpp -pthread -o server
+
+runserver:
+        ./server 8080 record.txt
+
+client : client.cpp
+        g++ -c client.cpp -o client
+
+runclient:
+        ./client 127.0.0.1 8080 0.2 transaction.txt
+
+clean :
+        rm server client
